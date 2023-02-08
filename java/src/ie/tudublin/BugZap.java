@@ -24,17 +24,24 @@ public class BugZap extends PApplet
 		playerY = height - 100;
 		playerWidth = 50;
 		halfPlayer = playerWidth * 0.5f;
+
+		resetBug();
 	}
 
-	void resetBug()
+	private void resetBug()
 	{
-		bugX = 50;
-		bugY = random(halfBug, width - halfBug);
+		bugX = random(bugWidth / 2, width - (bugWidth / 2));
+		bugY = 50;
 		bugWidth = 50;
-		halfBug = bugWidth * 0.5f;
 	}
 	
-	
+	void drawBug(float x, float y, float w)
+	{
+		float halfW = w / 2;
+		stroke(255);
+		noFill();
+		triangle(x - halfW, y + halfW, x, y - halfW, x + halfW, y + halfW);
+	}
 
 	void drawPlayer(float x, float y, float w)
 	{
@@ -45,15 +52,17 @@ public class BugZap extends PApplet
 		line(x, y - halfPlayer, x, y - halfPlayer * 2);
 	}
 
+	float playerSpeed = 5;
+
 	public void keyPressed()
 	{
 		if (keyCode == LEFT)
 		{
-			playerX --;
+			playerX -= playerSpeed;
 		}
 		if (keyCode == RIGHT)
 		{
-			playerX ++;
+			playerX += playerSpeed;
 		}
 
 		if (keyCode == ' ')
@@ -61,9 +70,21 @@ public class BugZap extends PApplet
 			line(playerX, playerY - halfPlayer, playerX, 0);
 		}
 	}
+
+	void moveBug()
+	{
+		bugY ++;
+		bugX += random(-20, 20);
+	}
+
 	public void draw()
 	{	
 		background(0);
 		drawPlayer(playerX, playerY, playerWidth);
+		drawBug(bugX, bugY, bugWidth);
+		if(frameCount % 20 == 0)
+		{
+			moveBug();
+		}
 	}
 }
