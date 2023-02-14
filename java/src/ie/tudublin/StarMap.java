@@ -29,7 +29,9 @@ public class StarMap extends PApplet
 		for (int i = -5; i <= 5; i++) 
 		{
 			float x = border + (gap * (i + 5));
+			text(i, x, border / 2);
 			line(x, border, x, height - border);
+			text(i, border / 2, x);
 			line(border, x, width - border, x);
 		}
 	}
