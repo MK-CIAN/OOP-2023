@@ -34,12 +34,24 @@ public class StarMap extends PApplet
 			text(i, border / 2, x);
 			line(border, x, width - border, x);
 		}
+
+		//float f = map(5, 0, 10, 100, 200);
+		//float f1 = map1(a:5, b:0, c:10)
 	}
 
+	float map1(float a, float b, float c, float d, float e)
+	{
+		float r1 = c - b;
+		float r2 = e - d;
+
+		float howFar = a - b;
+
+		return d + ((howFar / r1) * r2);
+	}
 
 	public void draw()
 	{	
-		strokeWeight(2);	
+		strokeWeight(1);	
 		drawGrid();	
 	}
 }
