@@ -1,6 +1,7 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 import processing.data.TableRow;
 
 public class Star {
@@ -33,8 +34,8 @@ public class Star {
     public void render(PApplet p)
     {
         float border = p.width * 0.1f;
-        float x = p.map(xG, -5, 5, border, p.width - border);
-        float y = p.map(yG, -5, 5, border, p.height - border);
+        float x = PApplet.map(xG, -5, 5, border, p.width - border);
+        float y = PApplet.map(yG, -5, 5, border, p.height - border);
 
         p.stroke(255);
         p.line(x, y-5, x, y + 5);
@@ -46,7 +47,6 @@ public class Star {
         p.textSize(12);
         p.text(displayName, x + 20, y);
         p.noFill();
-    
     }
 
     private String displayName;

@@ -85,6 +85,34 @@ public class StarMap extends PApplet
 
 		return d + ((howFar / r1) * r2);
 	}
+	
+	//Selecting the stars and displaying the distance between them
+	int selected1 = -1;
+	int selected2 = -1;
+
+	public void mousePressed()
+	{
+		for(int i = 0; i < stars.size(); i++)
+		{
+			Star s = stars.get(i);
+			if(dist(mouseX, mouseY, s.getxG(), s.getyG()) < 10)
+			{
+				if(selected1 == -1)
+				{
+					selected1 = i;
+				}
+				else if (selected2 == -1)
+				{
+					selected2 = i;
+				}
+				else
+				{
+					selected1 = i;
+					selected2 = -1;
+				}
+			}
+		}
+	}
 
 	public void draw()
 	{	
@@ -92,5 +120,23 @@ public class StarMap extends PApplet
 
 		drawGrid();	
 		displayStars();
+
+		//If I have selected a star or more
+		if(selected1 != -1 && selected2 == -1)
+		{
+			Star s1 = stars.get(selected1);
+			stroke(255, 255, 0);
+			line(s1.getxG(), s1.getyG(), mouseX, mouseY);
+		}
+		else if (selected1 != -1 && selected2 != -1)
+		{
+			Star s1 = stars.get(selected1);
+			Star s2 = stars.get(selected2);
+			stroke(255, 255, 0);
+			line(s1.getxG(), s1.getyG(), s2.getxG(), s2.getyG());
+			fill(255);
+			float distance = dist(s1.getxG(), s1.getyG(), s2.getxG(), s2.getyG());
+			text("Distance from" + s1.getDisplayName() + " to " + s2.getDisplayName() + " is " + distance + "Parsecs", 10, 10);
+		}
 	}
 }
