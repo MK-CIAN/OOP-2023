@@ -7,15 +7,17 @@ public class BugZap extends PApplet
 
 	float playerX, playerY, playerWidth;
 	float bugX, bugY, bugWidth;
+	float halfBugWidth = bugWidth / 2;
 	int hitX, hitY;
 	int starTimer = 20;
 
 	int score = 0;
+	int gameMode = 0;
 	float halfPlayer, halfBug;
 
 	public void settings()
 	{
-		size(500, 500);
+		size(800, 800);
 	}
 
 	public void setup() {
@@ -91,8 +93,20 @@ public class BugZap extends PApplet
 
 	void moveBug()
 	{
-		bugY ++;
-		bugX += random(-20, 20);
+		if ((frameCount % 10) == 0)
+		{
+			bugY += 2;
+			if(bugX < halfBugWidth)
+			{
+				bugX = halfBugWidth;
+			}
+
+			if (bugX > width - halfBugWidth)
+			{
+				bugX = width - halfBugWidth;
+			}
+			bugX += random(-20, 20);
+		}
 	}
 
 	void hitEffect(int x, int y)
@@ -122,18 +136,26 @@ public class BugZap extends PApplet
 		background(0);
 		drawPlayer(playerX, playerY, playerWidth);
 		drawBug(bugX, bugY, bugWidth);
-		if(frameCount % 20 == 0)
+		if(gameMode == 0)
 		{
 			moveBug();
+			text("Score: " + score, 50, 50);
+			if(starTimer > 0)
+			{
+				starTimer--;
+				hitEffect(hitX, hitY);
+			}
 		}
-
-		text("Score: " + score, 50, 50);
-
-		if(starTimer > 0)
+		else
 		{
-			starTimer--;
-			hitEffect(hitX, hitY);
+			textAlign(CENTER, CENTER);
+			textSize(20);
+			text("Game Over", width / 2, height / 2);
 		}
 
+		if(bugY > height - 150)
+		{
+			gameMode = 1;
+		}
 	}
 }
