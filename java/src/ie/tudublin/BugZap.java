@@ -7,6 +7,9 @@ public class BugZap extends PApplet
 
 	float playerX, playerY, playerWidth;
 	float bugX, bugY, bugWidth;
+	int hitX, hitY;
+	int starTimer = 20;
+
 	int score = 0;
 	float halfPlayer, halfBug;
 
@@ -71,6 +74,11 @@ public class BugZap extends PApplet
 			if (playerX > bugX - halfW && playerX < bugX + halfW)
 			{
 				score++;
+				hitX = (int) bugX;
+				hitY = (int) bugY;
+
+				hitEffect(hitX, hitY);
+				starTimer = 20;
 				resetBug();
 				line(playerX, playerY - halfPlayer, playerX, 0);
 			}
@@ -87,6 +95,28 @@ public class BugZap extends PApplet
 		bugX += random(-20, 20);
 	}
 
+	void hitEffect(int x, int y)
+	{
+		pushMatrix();
+		translate(x, y);
+		stroke(255);
+		fill(255, 0, 255);
+		beginShape();
+		for(int i = 0; i < 10; i++)
+		{
+			float angle = TWO_PI / 10 * i - HALF_PI;
+			float starX = cos(angle);
+			float starY = sin(angle);
+			vertex(starX * 10 * 10, starY * 10 * 10);
+			angle += TWO_PI / 20;
+			starX = cos(angle);
+			starY = sin(angle);
+			vertex(starX * 5 * 10, starY * 5 * 10);
+		}
+		endShape(CLOSE);
+		popMatrix();
+	}
+
 	public void draw()
 	{	
 		background(0);
@@ -98,5 +128,12 @@ public class BugZap extends PApplet
 		}
 
 		text("Score: " + score, 50, 50);
+
+		if(starTimer > 0)
+		{
+			starTimer--;
+			hitEffect(hitX, hitY);
+		}
+
 	}
 }
