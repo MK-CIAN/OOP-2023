@@ -36,8 +36,9 @@ public class Audio1 extends PApplet
 
     public void settings()
     {
-        //size(1000, 1000);
-        fullScreen(P3D, SPAN);
+        
+        size(1000, 1000);
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup()
@@ -56,7 +57,7 @@ public class Audio1 extends PApplet
         y = height / 2;
         smoothedY = y;
 
-        lerpedBuffer = new float[width];
+        lerpedBuffer = new float[ab.size()];
         
     }
 
