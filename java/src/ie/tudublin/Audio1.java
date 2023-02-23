@@ -15,6 +15,7 @@ public class Audio1 extends PApplet
 
     int mode = 0;
 
+    float[] lerpedBuffer;
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
@@ -35,8 +36,8 @@ public class Audio1 extends PApplet
 
     public void settings()
     {
-        size(1000, 1000);
-        //fullScreen(P3D, SPAN);
+        //size(1000, 1000);
+        fullScreen(P3D, SPAN);
     }
 
     public void setup()
@@ -55,7 +56,7 @@ public class Audio1 extends PApplet
         y = height / 2;
         smoothedY = y;
 
-
+        lerpedBuffer = new float[width];
         
     }
 
@@ -73,7 +74,9 @@ public class Audio1 extends PApplet
         for(int i = 0 ; i < ab.size() ; i ++)
         {
             sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
         }
+
         average= sum / (float) ab.size();
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
@@ -89,7 +92,7 @@ public class Audio1 extends PApplet
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
-                    float f = ab.get(i) * halfH;
+                    float f = lerpedBuffer[i] * halfH * 4.0f;
                     line(i, halfH + f, i, halfH - f);                    
                 }
                 break;
@@ -98,22 +101,5 @@ public class Audio1 extends PApplet
             break;
 
         }
-        
-
-
-        
-        // Other examples we made in the class
-        /*
-        stroke(255);
-        fill(100, 255, 255);        
-        
-        circle(width / 2, halfH, lerpedA * 100);
-
-        circle(100, y, 50);
-        y += random(-10, 10);
-        smoothedY = lerp(smoothedY, y, 0.1f);        
-        circle(200, smoothedY, 50);
-        */
-
     }        
 }
