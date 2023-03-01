@@ -16,10 +16,12 @@ public class Audio2 extends PApplet{
     AudioBuffer ab;
 
     FFT fft;
+    //New Instance for getting pitch
+    PitchSpeller ps;
 
     public void settings()
     {
-        size(1024, 1024);
+        size(512, 512);
     }
 
     public void setup()
@@ -30,6 +32,8 @@ public class Audio2 extends PApplet{
         lerpedBuffer = new float[width];
 
         fft = new FFT(width, 44100);
+
+        ps = new PitchSpeller();
     }
 
     float[] lerpedBuffer;
@@ -62,9 +66,10 @@ public class Audio2 extends PApplet{
         }
 
         float freq = fft.indexToFreq(highestIndex);
+        String noteName = ps.spell(freq);
         fill(255);
         textSize(20);
-        text("Freq: " + freq, 100, 100);
+        text("Freq: " + freq + ", Note: " + noteName, 100, 100);
 
         float y = map(freq, 1000.0f, 2500.0f, height, 0);
         lerpedY = lerp(lerpedY, y, 0.1f);
