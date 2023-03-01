@@ -21,7 +21,7 @@ public class Audio2 extends PApplet{
 
     public void settings()
     {
-        size(512, 512);
+        size(1024, 1024);
     }
 
     public void setup()
