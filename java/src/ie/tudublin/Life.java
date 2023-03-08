@@ -18,11 +18,12 @@ public class Life extends PApplet
 		board.randomise();
 	}
 
+	
+	
 	public void draw()
 	{	
 		background(0);
 		board.render();
 		board.applyRules();
-		
 	}
 }

@@ -42,6 +42,7 @@ Resources
 - https://github.com/skooter500/OOP_Labtest1_2017_Starter
 - https://github.com/skooter500/OOP-LabTest1-2016
 
+<<<<<<< HEAD
 # Week 7 - The Game of Life
 - [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EQyeIpRQ3AxPsA27SVd5CbAB7DvWjpeVJqhUAcEnYXCl1g?e=lCuvXJ)
 - [Epic Conway's Game of Life](https://www.youtube.com/watch?v=C2vgICfQawE)
@@ -108,6 +109,11 @@ If you want to learn more about cellular automata check out:
 ## Tutorial
 - [Recording](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EfIyi8xt-mFMtFdbKTxaI0EBZOMb-LGuDfwtxDW1AX7_tA?e=wMQ9i0)
 
+=======
+# Week 6 - Digital Audio 2 - Analyzing the FFT
+- [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EaVOsq7ifNlNloBIg1uek9ABKkwOAbcNLygpO7U-g6zS6g?e=fW2KUb)
+
+>>>>>>> b43014b563582778284a1411caae9f99937823e0
 ## Lab
 
 Update your forks to get the code we wrote on Monday!

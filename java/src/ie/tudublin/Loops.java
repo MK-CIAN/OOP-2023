@@ -30,18 +30,37 @@ public class Loops extends PApplet {
 
 		switch (mode) {
 			case 0:
-				int numCircles = (int) max(1, mouseX / 50.0f);
-				float d = width / numCircles;
-				for (int j = 0; j < numCircles; j++) {
-					for (int i = 0; i < numCircles; i++) {
-						float x = (d * 0.5f) + (d * i);
-						float y = (d * 0.5f) + (d * j);
-						float c = ((i + j) / ((numCircles - 1) * 2.0f)) * 255.0f;
-						fill((c + off) % 256, 255, 255);
-						circle(x, y, d);
-					}
-				}
-				off += (mouseY / 50.0f);
+				background(135, 206, 235); // set the background color to light blue
+
+				// draw the mountains
+				stroke(150);
+				fill(180);
+				triangle(0, 300, 200, 100, 400, 300);
+				triangle(300, 300, 500, 100, 700, 300);
+			
+				// draw the trees
+				stroke(0, 100, 0);
+				fill(0, 150, 0);
+				rect(100, 400, 50, 150);
+				rect(200, 350, 50, 200);
+				rect(300, 400, 50, 150);
+				rect(400, 350, 50, 200);
+				rect(500, 400, 50, 150);
+				rect(600, 350, 50, 200);
+			
+				// draw the person
+				stroke(0);
+				fill(255, 204, 0);
+				ellipse(400, 300, 50, 100); // head
+				rect(385, 350, 30, 80); // body
+				line(400, 430, 380, 480); // left arm
+				line(400, 430, 420, 480); // right arm
+				line(400, 430, 400, 500); // torso
+			
+				// draw the text
+				fill(0);
+				textSize(32);
+				text("A person walking through the forest with mountains in the background", 50, 50);
 				break;
 			case 1:
 				break;

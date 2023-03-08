@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
-import processing.data.*;
+//import processing.data.*;
 
 public class StarMap extends PApplet {
 
