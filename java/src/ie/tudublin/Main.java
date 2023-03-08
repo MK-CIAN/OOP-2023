@@ -39,19 +39,11 @@ public class Main
         processing.core.PApplet.runSketch( a, new Audio2());
     }
 
-<<<<<<< HEAD
 	public static void audio3()
 	{
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Audio3());
     }
-=======
-	/*public static void audio3()
-	{
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Audio3());
-    }*/
->>>>>>> b43014b563582778284a1411caae9f99937823e0
 
 	public static void life()
 	{
