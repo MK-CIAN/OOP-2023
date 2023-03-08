@@ -10,6 +10,7 @@ public class LifeBoard extends PApplet {
     PApplet p;
 
     float cellWidth;
+    //boolean paused;
 
     public boolean getCell(int row, int col)
     {
@@ -41,6 +42,7 @@ public class LifeBoard extends PApplet {
         }
         return count;
     }
+
 
     public void applyRules()
     {
@@ -85,6 +87,9 @@ public class LifeBoard extends PApplet {
         board = new boolean[size][size];
         next = new boolean[size][size];
         cellWidth = p.width / (float) size;
+
+        //setting paused to false
+       // paused = false;
     }
 
     public void randomise()
@@ -120,17 +125,6 @@ public class LifeBoard extends PApplet {
                 }
                 p.rect(x, y, cellWidth, cellWidth);
             }
-        }
-    }
-
-    //If key space bar is pressed, the board will pause
-    public void keyPressed()
-    {
-        if (p.key == ' ')
-        {
-            p.noLoop();
-            //debug message
-            System.out.println("Paused");
         }
     }
 

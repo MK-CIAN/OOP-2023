@@ -25,5 +25,20 @@ public class Life extends PApplet
 		background(0);
 		board.render();
 		board.applyRules();
-	}
+
+        if (keyCode == 32)
+        {
+            if (isLooping())
+            {
+                noLoop();
+                //debug message
+                System.out.println("Paused");
+            }
+            else{
+                loop();
+                //debug message
+                System.out.println("Unpaused");
+            }
+        }
+    }
 }
