@@ -2,7 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-public class LifeBoard {
+public class LifeBoard extends PApplet {
     boolean[][] board;
     boolean[][] next;
 
@@ -122,6 +122,18 @@ public class LifeBoard {
             }
         }
     }
+
+    //If key space bar is pressed, the board will pause
+    public void keyPressed()
+    {
+        if (p.key == ' ')
+        {
+            p.noLoop();
+            //debug message
+            System.out.println("Paused");
+        }
+    }
+
     public int getSize()
     {
         return size;
