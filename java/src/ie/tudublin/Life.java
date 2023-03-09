@@ -41,5 +41,12 @@ public class Life extends PApplet
                 System.out.println("Unpaused");
             }
         }
+
+		//Radnomising the boaord when 1 is pressed
+		if (key == '1')
+		{
+			board.randomise();
+			board.applyRules();
+		}
     }
 }
