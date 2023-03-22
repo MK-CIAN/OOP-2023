@@ -47,7 +47,7 @@ public class Audio1 extends PApplet
         // ab = ai.mix; 
 
         // And comment the next two lines out
-        ap = minim.loadFile("heroplanet.mp3", 1024);
+        ap = minim.loadFile("starryeyed.mp3", 1024);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
@@ -59,6 +59,8 @@ public class Audio1 extends PApplet
     float off = 0;
 
     float lerpedBuffer[] = new float[1024];
+    float Cx = random(width);
+    float Cy = random(height);
 
     public void draw()
     {
@@ -92,7 +94,7 @@ public class Audio1 extends PApplet
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
                     float f = lerpedBuffer[i] * halfH * 4.0f;
-                    line(i, halfH + f, i, halfH - f);                    
+                    line(halfH + f, i, halfH - f, i);                    
                 }
                 break;
         case 1:
@@ -118,7 +120,19 @@ public class Audio1 extends PApplet
                 line(i, 0, i, f);          
                 line(i, height, i, height - f);              
             }
-            break;          
+            break; 
+        case 3:
+            // Other examples we made in the class
+            background(0);
+            stroke(0);
+            fill(255);        
+
+            //drawing stars at random x and y positions
+            for(int i = 0 ; i < 10 ; i ++){
+                circle(Cx, Cy, smoothedAmplitude * 100);
+            }
+    
+            break;
         }
 
 
