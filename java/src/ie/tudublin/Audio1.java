@@ -18,7 +18,7 @@ public class Audio1 extends PApplet {
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
-    int numStars = 250;
+    int numStars = 500;
     float[] starX = new float[numStars];
     float[] starY = new float[numStars];
     float[] starReact = new float[numStars];
@@ -38,7 +38,7 @@ public class Audio1 extends PApplet {
     }
 
     public void settings() {
-        size(1024, 800);
+        size(1920, 1080);
         // fullScreen(P3D, SPAN);
     }
 
@@ -60,8 +60,8 @@ public class Audio1 extends PApplet {
         for(int i = 0; i < numStars; i++) {
             starX[i] = random(width);
             starY[i] = random(height / 1.5f);
-            //setting a ranom limit between 50 and 250
-            starReact[i] = random(20, 100);
+            //setting a ranom limit
+            starReact[i] = random(20, 75);
         }
     }
 
@@ -98,6 +98,7 @@ public class Audio1 extends PApplet {
                 colorMode(HSB, 255);
                 background(0, 10, 20);
 
+                //Drawing stars randomly
                 for(int i = 0; i < numStars; i++)
                 {
                     stroke(0);
@@ -105,7 +106,8 @@ public class Audio1 extends PApplet {
                     fill(255);
                     circle(starX[i], starY[i], smoothedAmplitude * starReact[i]);
                 }
-
+                
+                //Northern Lights Wave
                 for (int i = 0; i < ab.size(); i++) {
                     float c = map(i, 0, ab.size(), 50, 255);
                     float amplitude = ab.get(i);
