@@ -15,39 +15,27 @@ public class StarMap extends PApplet
 	ArrayList <Star> stars = new ArrayList <Star>();
 
 	public float border;
-
-    public void settings()
-	{
-		size(800, 800);
-	}
-
-	public void setup() {
-		colorMode(HSB);
-		loadStars();
-		printStars();
-
-		border = width * 0.1f;
-	}
-
 	public void drawGrid()
 	{
-		stroke(255);
-		float border = 50.0f;
+		stroke(255, 0, 255);
+        textAlign(CENTER, CENTER);
+        textSize(20);
+        for(int i = -5; i <=5; i ++)
+        {
+            float x = map(i, -5, 5, border, width - border);
+            line(x, border, x, height - border);
+            line(border, x, width - border, x);
+            fill(255);
+            text(i, x, border * 0.5f);
+            text(i, border * 0.5f, x);
+        }
+	}
 
-		int count = 10;
-		float gap = (width - (border * 2.0f)) / (float) count;
-
-		for (int i = -5; i <= 5; i++) 
-		{
-			float x = border + (gap * (i + 5));
-			text(i, x, border / 2);
-			line(x, border, x, height - border);
-			text(i, border / 2, x);
-			line(border, x, width - border, x);
+	public void printStars()
+	{
+		for (Star s : stars) {
+			System.out.println(s);
 		}
-
-		//float f = map(5, 0, 10, 100, 200);
-		//float f1 = map1(a:5, b:0, c:10)
 	}
 
 	public void loadStars()
@@ -59,11 +47,9 @@ public class StarMap extends PApplet
 		}
 	}
 
-	public void printStars()
+    public void settings()
 	{
-		for (Star s : stars) {
-			System.out.println(s);
-		}
+		size(800, 800);
 	}
 
 	Star first = null;
@@ -98,6 +84,14 @@ public class StarMap extends PApplet
 		}
 	}
 
+	public void setup() {
+		colorMode(RGB);
+		loadStars();
+		printStars();
+
+		border = width * 0.1f;
+	}
+
 	public void drawStars()
 	{
 		for(Star s:stars)
@@ -108,7 +102,7 @@ public class StarMap extends PApplet
 
 	public void draw()
 	{	
-		strokeWeight(1);	
+		background(0);	
 		drawGrid();
 		drawStars();
 
@@ -132,7 +126,7 @@ public class StarMap extends PApplet
 			}
 			else
 			{
-				stroke(255, 0, 0);
+				stroke(255, 255, 0);
 				line(x, y, mouseX, mouseY);
 			}
 		}
